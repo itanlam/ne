@@ -39,13 +39,13 @@ Connection conn = DriverManager.getConnection(url);
 
 ### Postgres Makefile commands
 
-Starting posstgres
+**Starting Postgres**
 
 ```shell
 $> make db-start
 ```
 
-Stoping postgres
+**Stoping Postgres**
 
 ```shell
 $> make db-start
