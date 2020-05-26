@@ -37,7 +37,7 @@ String url = "jdbc:postgresql://localhost/strapi?user=strapi&password=strapi&ssl
 Connection conn = DriverManager.getConnection(url);
 ```
 
-![dbeaver-test-conn.png](dbeaver-test-conn.png)
+![db/dbeaver-test-conn.png](dbeaver-test-conn.png)
 
 ### Postgres Makefile commands
 
