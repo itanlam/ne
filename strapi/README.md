@@ -6,7 +6,9 @@ The project [Strapi NE](https://github.com/itanlam/ne/projects/1)
 
 ## To Install
 
-First things first. Creating a docker-composer.yml to Postgres.
+First things first. Creating a docker-composer.yml to Postgres and Makefile for easy usage.
+
+### Postgres YML
 
 ```yml
 #...
@@ -35,6 +37,20 @@ String url = "jdbc:postgresql://localhost/strapi?user=strapi&password=strapi&ssl
 Connection conn = DriverManager.getConnection(url);
 ```
 
-### References
+### Postgres Makefile commands
+
+Starting posstgres
+
+```shell
+$> make db-start
+```
+
+Stoping postgres
+
+```shell
+$> make db-start
+```
+
+#### References
 
 - [Strapi Dockerfile](https://github.com/strapi/strapi-docker)
