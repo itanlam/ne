@@ -1,5 +1,4 @@
-![Strapi[https://img.shields.io/badge/Strapi-Node.js%20Headless%20CMS-blue](https://strapi.io)
-
+![[Strapi](https://img.shields.io/badge/Strapi-Node.js%20Headless%20CMS-blue)](https://strapi.io)
 Thanks https://shields.io !
 
 # [NE] Strapi
