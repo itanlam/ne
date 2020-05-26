@@ -15,7 +15,7 @@ services:
       POSTGRES_PASSWORD: strapi
       POSTGRES_DB: strapi
     volumes:
-      - 'strapi-postgres-data:/data/db'
+      - 'strapi-postgres-data:/data/strapi/db'
 volumes:
   strapi-postgres-data:
     driver: local
