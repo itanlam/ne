@@ -9,5 +9,8 @@
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 Thanks https://shields.io !
-# ne
-New experiences.
+
+# [NE] means New Experiences
+
+It is about my new experiences for coding and exploring technologies I want to share.
+
