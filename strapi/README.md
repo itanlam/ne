@@ -10,6 +10,8 @@ First things first. Creating a docker-composer.yml to Postgres and Makefile for 
 
 ### Postgres YML
 
+[Strapi Dockerfile](db/docker-compose.yml)
+
 ```yml
 #...
 ports:
@@ -52,7 +54,3 @@ $> make db-start
 ```shell
 $> make db-start
 ```
-
-#### References
-
-- [Strapi Dockerfile](https://github.com/strapi/strapi-docker)
