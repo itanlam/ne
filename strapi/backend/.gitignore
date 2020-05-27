@@ -2,7 +2,7 @@
 # Strapi
 ############################
 
-.env
-exports
-.cache
-build
+#.env
+#exports
+#.cache
+#build
