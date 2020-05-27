@@ -8,8 +8,8 @@ It is about my new experiences for coding and exploring technologies I want to s
 
 ## DB
 
-![Postgres](db/README.md)
+![Postgres](strapi/db/README.md)
 
 ## APP
 
-![App](app/README.md)
+![Backend](strapi/backend/README.md)

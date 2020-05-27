@@ -48,7 +48,7 @@ db-start:
 db-stop: 
 	docker-compose -f $(DB_DOCKER_COMPOSE_FILE) stop
 
-## make app-dev          : yarn --cwd backend develop
+## make app-dev          : cd backend && yarn develop
 
 app-dev: 
 	cd backend && yarn develop
