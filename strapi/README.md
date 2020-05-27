@@ -8,8 +8,8 @@ The project [Strapi NE](https://github.com/itanlam/ne/projects/1)
 
 ## DB
 
-![Postgres](./strapi/db/README.md)
+[Postgres](./db/README.md)
 
 ## APP
 
-![Backend](./strapi/backend/README.md)
+[Backend](./backend/README.md)
