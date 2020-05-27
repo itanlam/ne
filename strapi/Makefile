@@ -3,6 +3,7 @@ APP_PATH = strapi
 APP_IMAGE_NAME = strapi
 APP_CONTAINER_NAME = strapi
 DOCKER_COMPOSE_FILE = docker-compose.yml
+DB_DATA_PATH = ~/volumes/data/strapi/db
 DB_DOCKER_COMPOSE_FILE = db/docker-compose.yml
 
 .DEFAULT: help
@@ -35,12 +36,7 @@ network:
 ## make volumes           : mkdir -p ~/volumes/$(APP_CONTAINER_NAME)/www/html/
 
 volumes: 
-	mkdir -p ~/volumes/$(APP_CONTAINER_NAME)/
-
-## make stash             : git stash save "Changes saved by Makefile."
-
-stash: 
-	git stash save "Changes saved by Makefile."
+	mkdir -p $(DB_DATA_PATH)
 
 ## make db-start         : docker-compose -f $(DB_DOCKER_COMPOSE_FILE) up -d 
 
@@ -51,5 +47,20 @@ db-start:
 
 db-stop: 
 	docker-compose -f $(DB_DOCKER_COMPOSE_FILE) stop
+
+## make app-dev          : yarn --cwd backend develop
+
+app-dev: 
+	cd backend && yarn develop
+
+## make app-start        : cd backend && yarn start
+
+app-start: 
+	cd backend && yarn start
+
+## make app-install      : cd backend && yarn install
+
+app-install: 
+	cd backend && yarn install
 
 ## End Makefile 
