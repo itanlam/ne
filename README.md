@@ -6,10 +6,6 @@ Thanks https://shields.io !
 
 It is about my new experiences for coding and exploring technologies I want to share.
 
-## DB
+## Strapi Application
 
-![Postgres](strapi/db/README.md)
-
-## APP
-
-![Backend](strapi/backend/README.md)
+![Strapi](./strapi/README.md)
