@@ -30,3 +30,4 @@ Content-Type: application/json
 
 - [Github.com strapi-docker](https://github.com/strapi/strapi-docker)
 - [Visualstudio Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+- [Strapi.io guides auth-request](https://strapi.io/documentation/3.0.0-beta.x/guides/auth-request.html#login-as-a-reader)
