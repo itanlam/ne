@@ -8,4 +8,5 @@ It is about my new experiences for coding and exploring technologies I want to s
 
 ## Strapi Application
 
-[Strapi](./strapi/README.md)
+[Strapi App src](./strapi/README.md)
+[Strapi App Project](https://github.com/itanlam/ne/projects/1)

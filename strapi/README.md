@@ -4,11 +4,11 @@ The project [Strapi NE](https://github.com/itanlam/ne/projects/1)
 
 ## DB
 
-[Postgres](./db/README.md)
+[Postgres src](./db/README.md)
 
 ## APP
 
-[Backend](./backend/README.md)
+[Backend src](./backend/README.md)
 
 ## Rest client
 
