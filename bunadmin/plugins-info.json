@@ -1,6 +1,16 @@
 [
   {
     "enable": true,
+    "name": "bunadmin user authentication",
+    "version": "1.0.0-alpha.1",
+    "description": "authentication, user query",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/bunred/bunadmin-plugin-buncms-user.git"
+    },
+    "keywords": ["user", "auth"],
+    "homepage": "https://github.com/bunred/bunadmin-plugin-buncms-user",
     "plugin-id": "bunadmin-plugin-buncms-user",
     "plugin-navigation": "authentication",
     "plugin-author": "bunred",
@@ -22,13 +32,13 @@
       "type": "git",
       "url": "https://github.com/bunred/bunadmin-plugin-data-source-strapi.git"
     },
-    "keywords": ["data resource", "resource"],
+    "keywords": ["data source", "source"],
     "homepage": "https://github.com/bunred/bunadmin-plugin-data-source-strapi",
     "plugin-id": "bunadmin-plugin-data-source-strapi",
     "plugin-navigation": "data-source",
     "plugin-author": "bunred",
     "plugin-folder": "data-source-strapi",
-    "plugin-version": "1.0.0",
+    "plugin-version": "1.0.1",
     "plugin-bunadmin-version": "1.0.1",
     "plugin-download": {
       "type": "git",
@@ -47,10 +57,7 @@
     "name": "private plugin example",
     "version": "1.0.0",
     "description": "YOU CAN COPY, MODIFY OR DELETE THIS EXAMPLE OBJECT.",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/author/abc.git"
-    },
+    "repository": { "type": "git", "url": "https://github.com/author/abc.git" },
     "plugin-id": "bunadmin-plugin-private-example",
     "plugin-folder": "team-group",
     "plugin-version": "0.0.1",
