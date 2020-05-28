@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface Values {\n  username: string\n  password: string\n}\n"]},"metadata":{},"sourceType":"script"}

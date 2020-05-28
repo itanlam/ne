@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import { Query } from \"material-table\"\n\nexport interface DataCtrl extends EditableCtrl {\n  query: Query<any>\n}\n\nexport interface EditableCtrl {\n  SchemaName: string\n}\n"]},"metadata":{},"sourceType":"module"}

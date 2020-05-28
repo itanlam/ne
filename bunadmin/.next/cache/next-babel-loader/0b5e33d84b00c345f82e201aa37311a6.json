@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export default interface Values {\n  id: string\n  created_at: number\n  updated_at: number\n  username: string\n  email: string\n  password: string\n  role: string\n}\n"]},"metadata":{},"sourceType":"module"}
