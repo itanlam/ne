@@ -11,9 +11,9 @@ const I18N_CODE = "en" // Default i18n code, resources: ./src/utils/i18n/
 module.exports = {
   DEV: {
     I18N_CODE,
-    MAIN_URL: "http://127.0.0.1:51800/api/v1",
-    AUTH_URL: "http://127.0.0.1:51801/api/v1",
-    SITE_URLS: "http://127.0.0.1:51802/api/v1, http://127.0.0.1:51803/api/v1",
+    MAIN_URL: "http://localhost:51800/api/v1",
+    AUTH_URL: "http://localhost:51801/api/v1",
+    SITE_URLS: "http://localhost:51802/api/v1, http://localhost:51803/api/v1",
     SITE_NAME: "BunAdmin DEV",
     ON_I18N: true,    // I18N Menu
     ON_SETTING: true, // Setting Menu
@@ -29,8 +29,8 @@ module.exports = {
   },
   STAG: {
     I18N_CODE,
-    MAIN_URL: "http://10.0.0.2:51800/api/v1",
-    AUTH_URL: undefined,
+    MAIN_URL: "http://localhost:51800/api/v1",
+    AUTH_URL: "http://localhost:1337",
     SITE_URLS: undefined,
     SITE_NAME: "BunAdmin STAG",
     ON_I18N: true,
