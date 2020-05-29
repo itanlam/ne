@@ -4,7 +4,7 @@ import simpleRestProvider from './ra-strapi-rest';
 import authProvider from './authProvider'
 import Cookies from './helpers/Cookies';
 
-import { PostList } from './posts';
+import { TestList, TestEdit, TestCreate } from './tests';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -19,7 +19,8 @@ const dataProvider = simpleRestProvider('http://localhost:1337', httpClient);
 
 const App = () => (
   <Admin authProvider={authProvider} dataProvider={dataProvider}>
-    <Resource name="posts" list={PostList} />
+    <Resource name="tests" list={TestList} edit={TestEdit} create={TestCreate} />
+
   </Admin>
 );
 
