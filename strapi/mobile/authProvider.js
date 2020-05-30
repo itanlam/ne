@@ -10,6 +10,7 @@ export default {
         return fetchUtils.fetchJson(url, options);
     },
     login: ({ username, password, url }) => {
+        console.log('Teste!');
         const identifier = username // strapi expects 'identifier' and not 'username'
         const request = new Request(url, {
             method: 'POST',
