@@ -9,13 +9,13 @@ export default {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                identifier: 'guest@gmail.com',
-                password: '123456',
+                identifier: user,
+                password: password,
             }),
         };
 
         try {
-            const response = await fetch('http://hospedeiro.local:1337/auth/local', requestConfig);
+            const response = await fetch(url, requestConfig);
             const json = await response.json();
 
             if (json.error) {

@@ -2,14 +2,15 @@ import React from 'react';
 
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-import provider from './controller/UserController';
+import ctrl from './controller/UserController';
 
 export default class App extends React.Component {
 
   state = {
     auth: false,
-    email: "guest@gmail.com",
-    password: "123456"
+    url: 'http://hospedeiro.local:1337/auth/local',
+    email: '',
+    password: ''
   };
 
   render() {
@@ -52,9 +53,7 @@ export default class App extends React.Component {
                     errors = true;
                   }
                   if (!errors) {
-                    const authState = provider
-                      .login('this.state.email', 'this.state.password',
-                        'http://hospedeiro.local:1337/auth/local');
+                    const authState = ctrl.login(this.state.email, this.state.password, this.state.url);
                     this.setState({ atuh: authState });
                   }
                 }}
