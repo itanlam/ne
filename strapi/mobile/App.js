@@ -1,17 +1,15 @@
 import React from 'react';
+
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-import provider from './authProvider';
-import UserModel from './models/UserModel';
-
-const backend_url = 'http://localhost:1337/auth/local';
+import provider from './controller/UserController';
 
 export default class App extends React.Component {
 
   state = {
     auth: false,
-    email: "",
-    password: ""
+    email: "guest@gmail.com",
+    password: "123456"
   };
 
   render() {
@@ -54,8 +52,9 @@ export default class App extends React.Component {
                     errors = true;
                   }
                   if (!errors) {
-                    const user = new UserModel(this.state.email, this.state.password);
-                    const authState = provider.login(user.identifier, user.password, backend_url);
+                    const authState = provider
+                      .login('this.state.email', 'this.state.password',
+                        'http://hospedeiro.local:1337/auth/local');
                     this.setState({ atuh: authState });
                   }
                 }}
