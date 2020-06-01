@@ -1,68 +1,103 @@
 import React from 'react';
 
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import ctrl from './controller/UserController';
 
+const Stack = createStackNavigator();
+
+function LoginScreen({ navigation }) {
+
+  const [userId, setUserId] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [endpoint] = React.useState('http://hospedeiro.local:1337/auth/local');
+
+  return (
+    <>
+      {
+        <View style={styles.container}>
+          <Text style={styles.logo}>Login</Text>
+          <View style={styles.inputView} >
+            <TextInput
+              style={styles.inputText}
+              placeholder="Email..."
+              placeholderTextColor="#003f5c"
+              onChangeText={text => setUserId({ email: text })} />
+          </View>
+          <View style={styles.inputView} >
+            <TextInput
+              secureTextEntry
+              style={styles.inputText}
+              placeholder="Password..."
+              placeholderTextColor="#003f5c"
+              onChangeText={text => setPassword({ password: text })} />
+          </View>
+          <TouchableOpacity>
+            <Text style={styles.forgot}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.loginBtn}
+            onPress={() => {
+              let errors = false;
+              if (!userId || userId.length === 0) {
+                errors = true;
+              }
+              if (!password || password.length === 0) {
+                errors = true;
+              }
+              if (!errors) {
+                const authState = ctrl.login(userId, password, endpoint);
+                if (authState) {
+                  navigation.navigate('Home');
+                }
+              }
+            }}
+          >
+            <Text style={styles.loginText}>LOGIN</Text>
+          </TouchableOpacity>
+        </View >
+      }
+    </>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
 export default class App extends React.Component {
-
-  state = {
-    auth: false,
-    url: 'http://hospedeiro.local:1337/auth/local',
-    email: '',
-    password: ''
-  };
-
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <>
-        {
-          (this.state.auth) ?
-            <View style={styles.container}>
-              <Text>You are in!</Text>
-            </View>
-            :
-            <View style={styles.container}>
-              <Text style={styles.logo}>Login</Text>
-              <View style={styles.inputView} >
-                <TextInput
-                  style={styles.inputText}
-                  placeholder="Email..."
-                  placeholderTextColor="#003f5c"
-                  onChangeText={text => this.setState({ email: text })} />
-              </View>
-              <View style={styles.inputView} >
-                <TextInput
-                  secureTextEntry
-                  style={styles.inputText}
-                  placeholder="Password..."
-                  placeholderTextColor="#003f5c"
-                  onChangeText={text => this.setState({ password: text })} />
-              </View>
-              <TouchableOpacity>
-                <Text style={styles.forgot}>Forgot Password?</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.loginBtn}
-                onPress={() => {
-                  let errors = false;
-                  if (!this.state.email || this.state.length === 0) {
-                    errors = true;
-                  }
-                  if (!this.state.password || this.state.password.length === 0) {
-                    errors = true;
-                  }
-                  if (!errors) {
-                    const authState = ctrl.login(this.state.email, this.state.password, this.state.url);
-                    this.setState({ atuh: authState });
-                  }
-                }}
-              >
-                <Text style={styles.loginText}>LOGIN</Text>
-              </TouchableOpacity>
-            </View >
-        }
-      </>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#003f5c',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+          />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
