@@ -2,14 +2,15 @@
 import { saveUser, deleteUser } from '../redux/UserActions';
 
 export default {
-    login: async (user, password, url) => {
+    login: async (userId, password, url) => {
+        console.log(`login called with userID ${userId} and passwd ${password}`);
         const requestConfig = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                identifier: user,
+                identifier: userId.toLowerCase(),
                 password: password,
             }),
         };
@@ -34,4 +35,8 @@ export default {
     logout: async () => {
         deleteUser();
     },
+
+    getActiveUser: async (identifier) => {
+        return getUser(identifier);
+    }
 }

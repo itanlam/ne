@@ -1,106 +1,72 @@
-import React from 'react';
+import * as React from 'react';
 
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import SignInScreen from './SignInScreen';
+import HomeScreen from './HomeScreen';
+
+import { StyleSheet, Image, Button } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ctrl from './controller/UserController';
+import { AuthProvider, AuthConsumer } from './infra/AuthContext';
 
 const Stack = createStackNavigator();
 
-function LoginScreen({ navigation }) {
-
-  const [userId, setUserId] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [endpoint] = React.useState('http://hospedeiro.local:1337/auth/local');
-
+function LogoutTitle() {
   return (
-    <>
-      {
-        <View style={styles.container}>
-          <Text style={styles.logo}>Login</Text>
-          <View style={styles.inputView} >
-            <TextInput
-              style={styles.inputText}
-              placeholder="Email..."
-              placeholderTextColor="#003f5c"
-              onChangeText={text => setUserId({ email: text })} />
-          </View>
-          <View style={styles.inputView} >
-            <TextInput
-              secureTextEntry
-              style={styles.inputText}
-              placeholder="Password..."
-              placeholderTextColor="#003f5c"
-              onChangeText={text => setPassword({ password: text })} />
-          </View>
-          <TouchableOpacity>
-            <Text style={styles.forgot}>Forgot Password?</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.loginBtn}
-            onPress={() => {
-              let errors = false;
-              if (!userId || userId.length === 0) {
-                errors = true;
-              }
-              if (!password || password.length === 0) {
-                errors = true;
-              }
-              if (!errors) {
-                const authState = ctrl.login(userId, password, endpoint);
-                if (authState) {
-                  navigation.navigate('Home');
-                }
-              }
-            }}
-          >
-            <Text style={styles.loginText}>LOGIN</Text>
-          </TouchableOpacity>
-        </View >
-      }
-    </>
+    <AuthConsumer>
+      {({ logout }) => (
+        <Image
+          style={{ width: 35, height: 35 }}
+          source={require('./assets/icon.png')}
+          onPress={() => logout()}
+        />
+      )}
+    </AuthConsumer>
   );
 }
 
-function HomeScreen() {
+export default function App({ navigation }) {
+
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-    </View>
+    <AuthProvider>
+      <AuthConsumer>
+        {({ isAuth, login, logout }) => (
+          <>
+            {isAuth ? (
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen name="Home" component={HomeScreen}
+                    options={{
+                      headerStyle: {
+                        backgroundColor: '#003f5c',
+                      },
+                      headerTintColor: 'white',
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                      headerTitle: props => <LogoutTitle {...props} />,
+                      headerRight: () => (
+                        <Button
+                          onPress={() => logout()}
+                          title="Logout"
+                          style={styles.logout}
+                        />
+                      ),
+                    }}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            ) : (
+                <SignInScreen />
+              )}
+          </>
+        )}
+      </AuthConsumer>
+    </AuthProvider>
   );
 }
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#003f5c',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}>
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-          />
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -129,6 +95,10 @@ const styles = StyleSheet.create({
     color: "white"
   },
   forgot: {
+    color: "white",
+    fontSize: 11
+  },
+  logout: {
     color: "white",
     fontSize: 11
   },

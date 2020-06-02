@@ -15,3 +15,7 @@ export const saveUser = (jwt, user) => {
 export const deleteUser = () => {
     store.dispatch({ type: 'USER_DELETE' });
 };
+
+export const getUser = (user) => {
+    return store.getItem(user);
+};
