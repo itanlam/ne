@@ -1,71 +1,72 @@
-import React from 'react';
+import * as React from 'react';
 
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import SignInScreen from './SignInScreen';
+import HomeScreen from './HomeScreen';
 
-import ctrl from './controller/UserController';
+import { StyleSheet, Image, Button } from 'react-native';
 
-export default class App extends React.Component {
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-  state = {
-    auth: false,
-    url: 'http://hospedeiro.local:1337/auth/local',
-    email: '',
-    password: ''
-  };
+import { AuthProvider, AuthConsumer } from './infra/AuthContext';
 
-  render() {
-    return (
-      <>
-        {
-          (this.state.auth) ?
-            <View style={styles.container}>
-              <Text>You are in!</Text>
-            </View>
-            :
-            <View style={styles.container}>
-              <Text style={styles.logo}>Login</Text>
-              <View style={styles.inputView} >
-                <TextInput
-                  style={styles.inputText}
-                  placeholder="Email..."
-                  placeholderTextColor="#003f5c"
-                  onChangeText={text => this.setState({ email: text })} />
-              </View>
-              <View style={styles.inputView} >
-                <TextInput
-                  secureTextEntry
-                  style={styles.inputText}
-                  placeholder="Password..."
-                  placeholderTextColor="#003f5c"
-                  onChangeText={text => this.setState({ password: text })} />
-              </View>
-              <TouchableOpacity>
-                <Text style={styles.forgot}>Forgot Password?</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.loginBtn}
-                onPress={() => {
-                  let errors = false;
-                  if (!this.state.email || this.state.length === 0) {
-                    errors = true;
-                  }
-                  if (!this.state.password || this.state.password.length === 0) {
-                    errors = true;
-                  }
-                  if (!errors) {
-                    const authState = ctrl.login(this.state.email, this.state.password, this.state.url);
-                    this.setState({ atuh: authState });
-                  }
-                }}
-              >
-                <Text style={styles.loginText}>LOGIN</Text>
-              </TouchableOpacity>
-            </View >
-        }
-      </>
-    );
-  }
+const Stack = createStackNavigator();
+
+function LogoutTitle() {
+  return (
+    <AuthConsumer>
+      {({ logout }) => (
+        <Image
+          style={{ width: 35, height: 35 }}
+          source={require('./assets/icon.png')}
+          onPress={() => logout()}
+        />
+      )}
+    </AuthConsumer>
+  );
 }
+
+export default function App({ navigation }) {
+
+  return (
+    <AuthProvider>
+      <AuthConsumer>
+        {({ isAuth, login, logout }) => (
+          <>
+            {isAuth ? (
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen name="Home" component={HomeScreen}
+                    options={{
+                      headerStyle: {
+                        backgroundColor: '#003f5c',
+                      },
+                      headerTintColor: 'white',
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                      headerTitle: props => <LogoutTitle {...props} />,
+                      headerRight: () => (
+                        <Button
+                          onPress={() => logout()}
+                          title="Logout"
+                          style={styles.logout}
+                        />
+                      ),
+                    }}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            ) : (
+                <SignInScreen />
+              )}
+          </>
+        )}
+      </AuthConsumer>
+    </AuthProvider>
+  );
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -94,6 +95,10 @@ const styles = StyleSheet.create({
     color: "white"
   },
   forgot: {
+    color: "white",
+    fontSize: 11
+  },
+  logout: {
     color: "white",
     fontSize: 11
   },
