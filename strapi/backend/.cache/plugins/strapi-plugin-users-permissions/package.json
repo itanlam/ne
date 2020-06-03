@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-users-permissions",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Protect your API with a full-authentication process based on JWT",
   "strapi": {
     "name": "Roles & Permissions",
@@ -30,7 +30,7 @@
     "redux-saga": "^0.16.0",
     "request": "^2.83.0",
     "strapi-helper-plugin": "3.0.0",
-    "strapi-utils": "3.0.0",
+    "strapi-utils": "3.0.1",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
@@ -57,5 +57,5 @@
     "npm": ">=6.0.0"
   },
   "license": "MIT",
-  "gitHead": "6bb7a7f198b13b0780547285d4214704ce991c23"
+  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453"
 }

@@ -1,0 +1,16 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fathers",
+  "info": {
+    "name": "Father"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}

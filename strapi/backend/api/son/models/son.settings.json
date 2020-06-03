@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sons",
+  "info": {
+    "name": "Son"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "father": {
+      "model": "father"
+    },
+    "mather": {
+      "model": "mather"
+    }
+  }
+}
