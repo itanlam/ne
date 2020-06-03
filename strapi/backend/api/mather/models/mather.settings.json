@@ -1,0 +1,16 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mathers",
+  "info": {
+    "name": "Mather"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
